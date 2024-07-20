@@ -13,7 +13,13 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args){
-        OpenAiApi openAiApi= new OpenAiApi("sk-proj-5YzkkX4AJK2IvmflecSaT3BlbkFJP6xIwByJsGILB64bfMOg");
+        String openaiApiKey = System.getenv("OPENAI_API_KEY");
+
+        // Vérifie si la clé API a été récupérée avec succès
+        if (openaiApiKey == null || openaiApiKey.isEmpty()) {
+            throw new RuntimeException("La clé API OpenAI n'est pas définie dans les variables d'environnement.");
+        }
+        OpenAiApi openAiApi= new OpenAiApi((openaiApiKey);
         OpenAiChatModel openAiChatModel= new OpenAiChatModel(openAiApi, OpenAiChatOptions.builder()
                 .withModel("gpt-4o")
                 .withTemperature(0F)
