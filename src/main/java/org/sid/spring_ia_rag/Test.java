@@ -13,18 +13,18 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args){
-        String openaiApiKey = System.getenv("OPENAI_API_KEY");
+        
+
 
         // Vérifie si la clé API a été récupérée avec succès
-        if (openaiApiKey == null || openaiApiKey.isEmpty()) {
-            throw new RuntimeException("La clé API OpenAI n'est pas définie dans les variables d'environnement.");
-        }
-        OpenAiApi openAiApi= new OpenAiApi((openaiApiKey);
+      
+        OpenAiApi openAiApi= new OpenAiApi('');
         OpenAiChatModel openAiChatModel= new OpenAiChatModel(openAiApi, OpenAiChatOptions.builder()
                 .withModel("gpt-4o")
                 .withTemperature(0F)
                 .withMaxTokens(300)
                 .build());
+                
         String systemMessageText= """ 
 Vous êtes un assistant spécialisé dans le domaine de l'analyse des sentiments. 
 Votre tâche est d'extraire à partir d'un commentaire le sentiment sur différents aspects
